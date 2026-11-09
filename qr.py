@@ -76,9 +76,9 @@ st.markdown(
     }
 
     .stTextInput input::placeholder {
-        color: #555555 !important;
-        -webkit-text-fill-color: #555555 !important;
-        opacity: 1 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
     }
 
     /* Select box: white background and black selected value */
