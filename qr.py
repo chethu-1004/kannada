@@ -25,12 +25,13 @@ st.set_page_config(
 )
 
 # ==========================================
-# KARNATAKA FLAG THEME
+# KARNATAKA FLAG THEME + READABLE TEXT
 # ==========================================
 
 st.markdown(
     """
     <style>
+    /* Page background */
     .stApp {
         background: linear-gradient(
             135deg,
@@ -38,6 +39,7 @@ st.markdown(
             #fffafa 45%,
             #ffe0e0 100%
         );
+        color: #000000 !important;
     }
 
     .block-container {
@@ -45,56 +47,105 @@ st.markdown(
         padding-bottom: 2rem;
     }
 
-    h1, h2, h3 {
+    /* Keep only the main page title red */
+    h1 {
         color: #b30000 !important;
         font-weight: 800 !important;
     }
 
-    .karnataka-banner {
-        background: linear-gradient(
-            to bottom,
-            #ffcc00 0%,
-            #ffcc00 50%,
-            #d71920 50%,
-            #d71920 100%
-        );
-        padding: 8px;
-        border-radius: 12px;
-        margin-bottom: 20px;
+    /* All other headings and normal text black */
+    h2, h3, h4, h5, h6,
+    p, label, li, span, small,
+    [data-testid="stMarkdownContainer"],
+    [data-testid="stCaptionContainer"],
+    [data-testid="stWidgetLabel"] {
+        color: #000000 !important;
     }
 
+    h2, h3, h4, h5, h6 {
+        font-weight: 800 !important;
+    }
+
+    /* Text input: white field with black entered text */
     .stTextInput input {
-        border: 2px solid #d71920;
-        border-radius: 8px;
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+        border: 2px solid #b30000 !important;
+        border-radius: 8px !important;
     }
 
+    .stTextInput input::placeholder {
+        color: #555555 !important;
+        -webkit-text-fill-color: #555555 !important;
+        opacity: 1 !important;
+    }
+
+    /* Select box: white background and black selected value */
     .stSelectbox div[data-baseweb="select"] {
-        border-radius: 8px;
+        background-color: #ffffff !important;
+        border: 1px solid #b30000 !important;
+        border-radius: 8px !important;
     }
 
+    .stSelectbox div[data-baseweb="select"] *,
+    [data-baseweb="popover"] *,
+    [role="listbox"] *,
+    [role="option"] {
+        color: #000000 !important;
+    }
+
+    [data-baseweb="popover"],
+    [role="listbox"],
+    [role="option"] {
+        background-color: #ffffff !important;
+    }
+
+    /* High-contrast buttons: yellow background and black text */
     .stButton button,
     .stDownloadButton button,
     .stLinkButton a {
-        background: linear-gradient(90deg, #d71920, #a50000) !important;
-        color: white !important;
-        border: 2px solid #ffcc00 !important;
+        background: #ffcc00 !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+        border: 2px solid #b30000 !important;
         border-radius: 10px !important;
-        font-weight: bold !important;
+        font-weight: 800 !important;
         padding: 12px !important;
     }
 
+    .stButton button *,
+    .stDownloadButton button *,
+    .stLinkButton a * {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+    }
+
+    /* Payment amount card: black text for readability */
     div[data-testid="stMarkdownContainer"] div[style*="background-color:#e8f5e9"] {
         background: linear-gradient(135deg, #fff0a6, #ffe0e0) !important;
-        border: 2px solid #d71920;
-        border-radius: 15px;
+        border: 2px solid #b30000 !important;
+        border-radius: 15px !important;
     }
 
+    div[data-testid="stMarkdownContainer"] div[style*="background-color:#e8f5e9"] h1,
+    div[data-testid="stMarkdownContainer"] div[style*="background-color:#e8f5e9"] h3 {
+        color: #000000 !important;
+    }
+
+    /* Alert boxes */
     div[data-testid="stAlert"] {
-        border-radius: 10px;
+        border-radius: 10px !important;
     }
 
+    div[data-testid="stAlert"] *,
+    [data-testid="stNotification"] * {
+        color: #000000 !important;
+    }
+
+    /* Dividers and footer */
     hr {
-        border-color: #d71920 !important;
+        border-color: #b30000 !important;
     }
 
     footer {
@@ -171,13 +222,14 @@ if category != "Select Category":
     st.markdown(
         f"""
         <div style="
-            background-color:#e8f5e9;
-            padding:25px;
-            border-radius:12px;
-            text-align:center;
+            background: linear-gradient(135deg, #fff0a6, #ffe0e0);
+            padding: 25px;
+            border: 2px solid #b30000;
+            border-radius: 12px;
+            text-align: center;
         ">
-            <h3 style="color:#166534;">Total Amount</h3>
-            <h1 style="color:#15803d;">₹{amount:,}</h1>
+            <h3 style="color:#000000;">Total Amount</h3>
+            <h1 style="color:#000000;">₹{amount:,}</h1>
         </div>
         """,
         unsafe_allow_html=True,
